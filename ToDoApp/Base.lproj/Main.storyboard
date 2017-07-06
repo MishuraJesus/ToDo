@@ -12,13 +12,13 @@
         <!--To-Do List-->
         <scene sceneID="b7A-j4-WDk">
             <objects>
-                <tableViewController id="FM7-ge-7V1" sceneMemberID="viewController">
+                <tableViewController id="FM7-ge-7V1" customClass="ToDoListTableViewController" customModule="ToDoApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="KYr-ZZ-qeK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="jnc-gF-ufl">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ToDoCell" id="jnc-gF-ufl" customClass="ToDoCell" customModule="ToDoApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jnc-gF-ufl" id="47H-u8-nxi">
@@ -39,7 +39,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JtV-ri-wR6">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="JtV-ri-wR6">
                                             <rect key="frame" x="290" y="11" width="77" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -57,6 +57,11 @@
                                         <constraint firstItem="JtV-ri-wR6" firstAttribute="centerY" secondItem="47H-u8-nxi" secondAttribute="centerY" id="ps2-wP-bqa"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dueDateLabel" destination="JtV-ri-wR6" id="fQB-N2-SA1"/>
+                                    <outlet property="isCompleteButton" destination="80g-db-RfK" id="ooJ-d1-ovS"/>
+                                    <outlet property="titleLabel" destination="pH5-l9-8cO" id="vut-fJ-2aR"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
