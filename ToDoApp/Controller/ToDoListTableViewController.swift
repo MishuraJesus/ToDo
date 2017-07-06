@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ToDoListTableViewController: UITableViewController {
+class ToDoListTableViewController: UITableViewController, ToDoCellDelegate {
     
     var todos: [ToDo]!
     
@@ -29,11 +29,20 @@ class ToDoListTableViewController: UITableViewController {
         }
     }
     
+    // Translate Date format to String with special russian format
     func dateToString(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d MMM yyyy"
         dateFormatter.locale = Locale(identifier: "ru_RU")
         return dateFormatter.string(from: date)
+    }
+    
+    func checkmarkButtonPressed(cell: UITableViewCell) {
+        if let indexPath = tableView.indexPath(for: cell) {
+            let todo = todos[indexPath.row]
+            todo.isComplete = !todo.isComplete
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
     }
     
     // MARK: - TableView DataSource
@@ -50,6 +59,7 @@ class ToDoListTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: PropertyKeys.cellReuseIdentifier) as? ToDoCell else { fatalError("Can not create deque reusable cell with identifier") }
         let todo = todos[indexPath.row]
         cell.toDoCellConfiguration(title: todo.title, dueDateString: dateToString(date: todo.dueDate), isComplete: todo.isComplete)
+        cell.delegate = self
         return cell
     }
     

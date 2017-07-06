@@ -32,6 +32,9 @@
                                                 <constraint firstAttribute="height" constant="36" id="PeT-Ej-uIb"/>
                                             </constraints>
                                             <state key="normal" image="Checked"/>
+                                            <connections>
+                                                <action selector="isCompleteButtonPressed:" destination="jnc-gF-ufl" eventType="touchUpInside" id="7iL-hm-tEL"/>
+                                            </connections>
                                         </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pH5-l9-8cO">
                                             <rect key="frame" x="52" y="11" width="230" height="21"/>
