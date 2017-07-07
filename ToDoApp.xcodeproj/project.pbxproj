@@ -14,6 +14,7 @@
 		7CDB8D1A1F0E953B00FFFEBF /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDB8D191F0E953B00FFFEBF /* ToDo.swift */; };
 		7CDB8D1C1F0E970D00FFFEBF /* ToDoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDB8D1B1F0E970D00FFFEBF /* ToDoListTableViewController.swift */; };
 		7CDB8D1E1F0E991800FFFEBF /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDB8D1D1F0E991800FFFEBF /* ToDoCell.swift */; };
+		7CDB8D221F0FB45600FFFEBF /* NewToDoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CDB8D211F0FB45600FFFEBF /* NewToDoTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		7CDB8D191F0E953B00FFFEBF /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
 		7CDB8D1B1F0E970D00FFFEBF /* ToDoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListTableViewController.swift; sourceTree = "<group>"; };
 		7CDB8D1D1F0E991800FFFEBF /* ToDoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
+		7CDB8D211F0FB45600FFFEBF /* NewToDoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewToDoTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				7CDB8D1B1F0E970D00FFFEBF /* ToDoListTableViewController.swift */,
+				7CDB8D211F0FB45600FFFEBF /* NewToDoTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CDB8D221F0FB45600FFFEBF /* NewToDoTableViewController.swift in Sources */,
 				7CDB8D051F0E8FD000FFFEBF /* AppDelegate.swift in Sources */,
 				7CDB8D1A1F0E953B00FFFEBF /* ToDo.swift in Sources */,
 				7CDB8D1C1F0E970D00FFFEBF /* ToDoListTableViewController.swift in Sources */,
@@ -303,6 +307,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = C966N2GNTD;
 				INFOPLIST_FILE = ToDoApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mikhail.ToDoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -317,6 +322,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = C966N2GNTD;
 				INFOPLIST_FILE = ToDoApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mikhail.ToDoApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";

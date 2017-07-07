@@ -14,12 +14,15 @@ class ToDoListTableViewController: UITableViewController, ToDoCellDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        todos = ToDo.loadToDos()
         exampleToDos()
         self.navigationItem.leftBarButtonItem = editButtonItem
     }
     
     struct PropertyKeys {
         static let cellReuseIdentifier = "ToDoCell"
+        static let reminderDetailSegueIdentifier = "ReminderDetailSegue"
+        static let unwindSaveNewToDoIdentifier = "SaveNewToDo"
     }
     
     // If there are no ToDos in the list by launching, array will have example todos, which were created manually
@@ -37,11 +40,13 @@ class ToDoListTableViewController: UITableViewController, ToDoCellDelegate {
         return dateFormatter.string(from: date)
     }
     
+    // Delegate method to get cell which was tapped to change todo.isComplete value
     func checkmarkButtonPressed(cell: UITableViewCell) {
         if let indexPath = tableView.indexPath(for: cell) {
             let todo = todos[indexPath.row]
             todo.isComplete = !todo.isComplete
             tableView.reloadRows(at: [indexPath], with: .automatic)
+            ToDo.saveToDos(todos: todos)
         }
     }
     
@@ -70,6 +75,7 @@ class ToDoListTableViewController: UITableViewController, ToDoCellDelegate {
             todos.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         }
+        ToDo.saveToDos(todos: todos)
     }
     
     // Allow editing the table view
@@ -88,5 +94,34 @@ class ToDoListTableViewController: UITableViewController, ToDoCellDelegate {
         let todoToMove = todos[sourceIndexPath.row]
         todos.remove(at: sourceIndexPath.row)
         todos.insert(todoToMove, at: destinationIndexPath.row)
+        ToDo.saveToDos(todos: todos)
+    }
+    
+    //MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // TODO: Write segue
+        if let newToDoTableViewController = segue.destination as? NewToDoTableViewController {
+            guard segue.identifier == PropertyKeys.reminderDetailSegueIdentifier else { fatalError("reminderDetailSegueIdentifier fail") }
+            guard let selectedRowIndexPath = tableView.indexPathForSelectedRow else { fatalError("selected row fail") }
+            newToDoTableViewController.todo = todos[selectedRowIndexPath.row]
+        }
+    }
+    
+    // If was triggered by "Cancel" - just return to the list
+    // If was triggered by "Save" - if founds seleceted row, then todo object was changed. Replace obkect and reload the cell. If it is a new object - append new object to array and insert new row with new indexpath
+    @IBAction func unwindToToDoList(segue: UIStoryboardSegue) {
+        guard let newToDoTableViewController = segue.source as? NewToDoTableViewController else { return }
+        if segue.identifier == PropertyKeys.unwindSaveNewToDoIdentifier {
+            guard let todo = newToDoTableViewController.todo else { return }
+            if let selectedRowIndexPath = tableView.indexPathForSelectedRow {
+                todos[selectedRowIndexPath.row] = todo
+                tableView.reloadRows(at: [selectedRowIndexPath], with: .automatic)
+            } else {
+                let newIndexPath = IndexPath(row: todos.count, section: 0)
+                todos.append(todo)
+                tableView.insertRows(at: [newIndexPath], with: .automatic)
+            }
+        }
+        ToDo.saveToDos(todos: todos)
     }
 }
